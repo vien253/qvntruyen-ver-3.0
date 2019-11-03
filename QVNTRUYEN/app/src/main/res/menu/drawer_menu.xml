@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    >
+
+        <item android:id="@+id/trangchu"
+            android:icon="@drawable/ic_home"
+            android:title="Trang chủ">
+        </item>
+        <item android:id="@+id/hot"
+            android:icon="@drawable/hot"
+            android:title="HOT!!!">
+        </item>
+        <item android:id="@+id/yeuthich"
+            android:icon="@drawable/yeu_thich_24dp"
+            android:title="List yêu thích">
+        </item>
+        <item android:id="@+id/theloai"
+            android:icon="@drawable/theloai_24dp"
+            android:title="Thể loại">
+            <menu>
+
+                <item
+                    android:id="@+id/sex"
+                    android:title="@string/sex" />
+
+                <item
+                    android:id="@+id/action"
+                    android:title="@string/hanhdong" />
+            </menu>
+        </item>
+        <item android:id="@+id/gopy"
+            android:icon="@drawable/gopy_24dp"
+            android:title="Góp ý">
+        </item>
+
+</menu>

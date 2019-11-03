@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">QVN TRUYEN</string>
+    <!--    the loai-->
+    <string name="sex"> 18+ </string>
+    <string name="hanhdong"> Hành động</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="xu_t">Đề xuất</string>
+</resources>
