@@ -53,9 +53,8 @@ public class FragmentHome extends Fragment {
         gView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                FragmentTransaction ff = getActivity().getSupportFragmentManager().beginTransaction();
-                ff.replace(R.id.fragment_container, new Item_click());
-                ff.commit();
+                Intent intent = new Intent(getContext(), Item_click.class);
+                startActivity(intent);
             }
         });
 
