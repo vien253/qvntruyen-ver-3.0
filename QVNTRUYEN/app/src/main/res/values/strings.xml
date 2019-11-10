@@ -7,4 +7,7 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="xu_t">Đề xuất</string>
+    //gridview
+    <string name="home"> Trang chủ </string>
+    <string name="note"> Tuyển chon những bộ truyện hay nhất hiện nay! </string>
 </resources>
