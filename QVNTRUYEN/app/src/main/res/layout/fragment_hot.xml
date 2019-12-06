@@ -1,23 +1,112 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView android:layout_height="match_parent"
-    android:layout_width="match_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:background="#32090909"
+    android:layout_marginTop="56dp">
 
-    <LinearLayout
+    <RelativeLayout
+        android:id="@+id/frm_profile_profile"
+        android:background="#111"
+        android:layout_marginTop="1dp"
+        android:layout_marginRight="1dp"
+        android:layout_marginLeft="1dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-        <Button
-            android:text="Button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+        android:layout_height="120dp">
 
-        </Button>
-        <Button
-            android:text="Button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+        <ImageView
+            android:id="@+id/avt_icon"
+            android:layout_width="410dp"
+            android:layout_height="110dp"
+            android:src="@mipmap/ic_launcher" />
+    </RelativeLayout>
 
-        </Button>
-    </LinearLayout>
-</ScrollView>
+    <RelativeLayout
+        android:background="#111"
+        android:paddingLeft="10dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginRight="1dp"
+        android:layout_marginLeft="1dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:src="@drawable/ic_person_black_24dp"
+            android:id="@+id/setting_icon"
+            android:layout_width="50dp"
+            android:layout_height="50dp"/>
+        <TextView
+            android:layout_toRightOf="@id/setting_icon"
+            android:gravity="center|left"
+            android:textSize="20sp"
+            android:paddingLeft="10dp"
+            android:text="Đăng nhập"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:textColor="#fff"/>
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/frm_profile_change_pass"
+        android:background="#111"
+        android:paddingLeft="10dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginRight="1dp"
+        android:layout_marginLeft="1dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:src="@drawable/ic_register"
+            android:id="@+id/setting_icon"
+            android:layout_width="50dp"
+            android:layout_height="50dp"/>
+        <TextView
+            android:layout_toRightOf="@id/setting_icon"
+            android:gravity="center|left"
+            android:textSize="20sp"
+            android:paddingLeft="10dp"
+            android:text="Đăng kí"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:textColor="#fff"/>
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/frm_profile_change_pass"
+        android:background="#111"
+        android:paddingLeft="10dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginRight="1dp"
+        android:layout_marginLeft="1dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:src="@drawable/ic_search_black_24dp"
+            android:id="@+id/setting_icon"
+            android:layout_width="50dp"
+            android:layout_height="50dp"/>
+        <TextView
+            android:layout_toRightOf="@id/setting_icon"
+            android:gravity="center|left"
+            android:textSize="20sp"
+            android:paddingLeft="10dp"
+            android:text="Phản hồi"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:textColor="#fff"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/frm_profile_profile"
+        android:background="#111"
+        android:layout_marginTop="1dp"
+        android:layout_marginRight="1dp"
+        android:layout_marginLeft="1dp"
+        android:layout_width="match_parent"
+        android:layout_height="400dp">
+
+
+    </RelativeLayout>
+
+
+
+
+
+
+</LinearLayout>

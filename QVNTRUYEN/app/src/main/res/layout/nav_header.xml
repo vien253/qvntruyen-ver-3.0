@@ -1,14 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="176dp"
+    android:layout_height="70dp"
     android:background="#1A1818"
-    android:gravity="bottom"
+    android:gravity="top
+"
     android:padding="16dp"
     android:theme="@style/ThemeOverlay.AppCompat.Dark"
     android:orientation="vertical"
     >
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Thể loại"
+        android:gravity="center"
+        android:textColor="#FFFF"
+        android:textSize="30dp" />
 
-</LinearLayout>
+
+</RelativeLayout>

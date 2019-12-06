@@ -2,35 +2,79 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     >
 
-        <item android:id="@+id/trangchu"
-            android:icon="@drawable/ic_home"
-            android:title="Trang chủ">
+        <item android:id="@+id/action"
+            android:title="Action">
         </item>
         <item android:id="@+id/hot"
-            android:icon="@drawable/hot"
-            android:title="HOT!!!">
+            android:title="Adult">
         </item>
-        <item android:id="@+id/yeuthich"
-            android:icon="@drawable/yeu_thich_24dp"
-            android:title="List yêu thích">
+        <item android:id="@+id/anime"
+            android:title="Anime">
         </item>
-        <item android:id="@+id/theloai"
-            android:icon="@drawable/theloai_24dp"
-            android:title="Thể loại">
-            <menu>
+    <item android:id="@+id/chuyensinh"
+        android:title="Chuyển sinh">
+    </item>
+    <item android:id="@+id/comic"
+        android:title="Comic">
+    </item>
+    <item android:id="@+id/drama"
+        android:title="Drama">
+    </item>
+    <item android:id="@+id/ecchi"
+    android:title="Ecchi">
+    </item>
+    <item android:id="@+id/fantasy"
+    android:title="Fantasy">
+    </item>
+    <item android:id="@+id/harem"
+    android:title="Harem">
+    </item>
+    <item android:id="@+id/horror"
+    android:title="Horror">
+    </item>
+    <item android:id="@+id/liveaction"
+    android:title="Live Action">
+    </item>
+    <item android:id="@+id/manhwa"
+    android:title="Manhwa">
+    </item>
+    <item android:id="@+id/mature"
+    android:title="Mature">
+    </item>
+    <item android:id="@+id/shoujo"
+    android:title="Shoujo">
+    </item>
+    <item android:id="@+id/yeuthich"
+    android:title="Shounen">
+    </item>
+    <item android:id="@+id/smurt"
+    android:title="Smurt">
+    </item>
+    <item android:id="@+id/yuri"
+    android:title="Yuri">
+    </item>
+    <item android:id="@+id/tragedy"
+    android:title="Tragedy">
+    </item>
+    <item android:id="@+id/wedtoon"
+    android:title="Wedtoon">
+    </item>
 
-                <item
-                    android:id="@+id/sex"
-                    android:title="@string/sex" />
 
-                <item
-                    android:id="@+id/action"
-                    android:title="@string/hanhdong" />
-            </menu>
-        </item>
-        <item android:id="@+id/gopy"
-            android:icon="@drawable/gopy_24dp"
-            android:title="Góp ý">
-        </item>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 </menu>
