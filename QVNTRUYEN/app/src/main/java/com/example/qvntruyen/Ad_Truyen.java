@@ -9,70 +9,72 @@ import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.fragment.app.Fragment;
+
+import java.util.ArrayList;
 import java.util.List;
 
 
 public class Ad_Truyen extends BaseAdapter {
-
-    private List<DS_Truyen> list;
+    private Context context;
+    private int layout;
+    private List<DS_Truyen> DSList;
     LayoutInflater layoutInflater;
-    Context context;
 
-    public Ad_Truyen(Context context, List<DS_Truyen> list) {
-        this.list = list;
+
+    public Ad_Truyen(Context context, int layout, List<DS_Truyen> DSList) {
         this.context = context;
-        layoutInflater = LayoutInflater.from(context);
+        this.layout = layout;
+        this.DSList = DSList;
+
     }
 
     @Override
     public int getCount() {
-        return list.size();
+        return DSList.size();
     }
 
     @Override
-    public Object getItem(int position) {
-        return list.get(position);
+    public Object getItem(int i) {
+        return null;
     }
 
     @Override
-    public long getItemId(int position) {
-        return position;
+    public long getItemId(int i) {
+        return 0;
     }
-
-    @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-        ViewHolder holder;
-        if(convertView == null){
-            convertView = layoutInflater.inflate(R.layout.gv_item, null);
-            holder = new ViewHolder();
-            holder.img = (ImageView) convertView.findViewById(R.id.gv_item_iv_image);
-            holder.name = (TextView) convertView.findViewById(R.id.gv_item_tv_nameimage);
-            convertView.setTag(holder);
-        }
-        else {
-            holder = (ViewHolder) convertView.getTag();
-        }
-
-        DS_Truyen ds = this.list.get(position);
-        holder.name.setText(ds.getName());
-
-        int imgId = this.getMipmapResIdByName(ds.getImg());
-        holder.img.setImageResource(imgId);
-        return convertView;
-    }
-
-    public int getMipmapResIdByName(String resName)  {
-        String pkgName = context.getPackageName();
-
-        // Trả về 0 nếu không tìm thấy.
-        int resID = context.getResources().getIdentifier(resName , "mipmap", pkgName);
-        Log.i("CustomGridView", "Res Name: "+ resName+"==> Res ID = "+ resID);
-        return resID;
-    }
-
-    static class ViewHolder{
-        ImageView img;
+    private class ViewHolder{
         TextView name;
+        ImageView img;
+    }
+
+    @Override
+    public View getView(int i, View view, ViewGroup viewGroup) {
+        ViewHolder holder;
+        if(view==null)
+        {
+          holder= new ViewHolder();
+          LayoutInflater inflater=(LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+          view = inflater.inflate(layout,null);
+          holder.img=(ImageView) view.findViewById(R.id.gv_item_iv_image);
+          holder.name=(TextView) view.findViewById(R.id.gv_item_tv_nameimage);
+          view.setTag(holder);
+        }else{
+            holder=(ViewHolder)view.getTag();
+        }
+        DS_Truyen ds_truyen= this.DSList.get(i);
+        holder.name.setText(ds_truyen.getTenTruyen());
+        int ImgID = getMipMapResIdByName(ds_truyen.getAnh());
+        holder.img.setImageResource(ImgID);
+        //Toast.makeText(context, a, Toast.LENGTH_SHORT).show();
+        return view;
+    }
+    public int getMipMapResIdByName(String resName){
+        String pgkName = context.getPackageName();
+        int resID = context.getResources().getIdentifier(resName, "mipmap", pgkName);
+        Log.i("CustomListView", "ResName:" + resName + "==> Res ID =" + resID);
+        return resID;
     }
 }

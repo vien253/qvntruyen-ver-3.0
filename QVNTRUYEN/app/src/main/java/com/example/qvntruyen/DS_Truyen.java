@@ -1,27 +1,47 @@
 package com.example.qvntruyen;
 
 public class DS_Truyen {
-    private String img;
-    private  String name;
+    private int ID;
+    private String TenTruyen;
+    private String TheLoai;
+    private  String Anh;
 
-    public DS_Truyen(String img, String name) {
-        this.img = img;
-        this.name = name;
+    public DS_Truyen(int ID, String tenTruyen, String theLoai, String anh) {
+        ID = ID;
+        TenTruyen = tenTruyen;
+        TheLoai = theLoai;
+        Anh = anh;
     }
 
-    public String getImg() {
-        return img;
+    public int getID() {
+        return ID;
     }
 
-    public void setImg(String img) {
-        this.img = img;
+    public void setID(int ID) {
+        this.ID = ID;
     }
 
-    public String getName() {
-        return name;
+    public String getTenTruyen() {
+        return TenTruyen;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setTenTruyen(String tenTruyen) {
+        TenTruyen = tenTruyen;
+    }
+
+    public String getTheLoai() {
+        return TheLoai;
+    }
+
+    public void setTheLoai(String theLoai) {
+        TheLoai = theLoai;
+    }
+
+    public String getAnh() {
+        return Anh;
+    }
+
+    public void setAnh(String anh) {
+        Anh = anh;
     }
 }
