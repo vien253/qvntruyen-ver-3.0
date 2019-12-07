@@ -92,6 +92,9 @@ public class FragmentHome extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(getContext(), Item_click.class);
+                intent.putExtra("img", img_detail.get(position).getAnh());
+                intent.putExtra("tentruyen", img_detail.get(position).getTenTruyen());
+                intent.putExtra("theloai", img_detail.get(position).getTheLoai());
                 startActivity(intent);
             }
         });
