@@ -36,7 +36,7 @@ import java.util.List;
 public class FragmentHome extends Fragment {
     String urlGetData="http://192.168.1.111:8080/android/getdata.php";
     TextView mTvName;
-    ArrayList<DS_Truyen> img_detail;
+     ArrayList<DS_Truyen> img_detail;
     GridView gView;
     Ad_Truyen listtruyen;
     FrameLayout frameLayout;
@@ -51,6 +51,7 @@ public class FragmentHome extends Fragment {
         listtruyen = new Ad_Truyen(getContext(),R.layout.gv_item,img_detail);
         gView.setAdapter(listtruyen);
         GetData(urlGetData);
+        Info();
         return view;
     }
     private void GetData(String url) {
@@ -66,7 +67,8 @@ public class FragmentHome extends Fragment {
                                         object.getInt("ID"),
                                         object.getString("TenTruyen"),
                                         object.getString("TheLoai"),
-                                        object.getString("Anh")
+                                        object.getString("Anh"),
+                                        object.getString("TacGia")
                                 ));
                             } catch (JSONException e) {
                                 e.printStackTrace();
@@ -83,6 +85,16 @@ public class FragmentHome extends Fragment {
                 }
         );
         requestQueue.add(jsonArrayRequest);
+
+    }
+    private void Info(){
+        gView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(getContext(), Item_click.class);
+                startActivity(intent);
+            }
+        });
 
     }
 

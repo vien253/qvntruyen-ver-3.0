@@ -5,6 +5,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
@@ -12,6 +13,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
+
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,6 +24,7 @@ public class Ad_Truyen extends BaseAdapter {
     private Context context;
     private int layout;
     private List<DS_Truyen> DSList;
+    private  static ArrayAdapter<DS_Truyen> list;
     LayoutInflater layoutInflater;
 
 
@@ -47,6 +51,8 @@ public class Ad_Truyen extends BaseAdapter {
     }
     private class ViewHolder{
         TextView name;
+        TextView theloai;
+        TextView tacgia;
         ImageView img;
     }
 
@@ -60,15 +66,21 @@ public class Ad_Truyen extends BaseAdapter {
           view = inflater.inflate(layout,null);
           holder.img=(ImageView) view.findViewById(R.id.gv_item_iv_image);
           holder.name=(TextView) view.findViewById(R.id.gv_item_tv_nameimage);
+          holder.theloai=(TextView) view.findViewById(R.id.gv_item_theloai);
+            holder.tacgia=(TextView) view.findViewById(R.id.gv_item_tg);
           view.setTag(holder);
         }else{
             holder=(ViewHolder)view.getTag();
         }
         DS_Truyen ds_truyen= this.DSList.get(i);
         holder.name.setText(ds_truyen.getTenTruyen());
-        int ImgID = getMipMapResIdByName(ds_truyen.getAnh());
-        holder.img.setImageResource(ImgID);
+        holder.theloai.setText(ds_truyen.getTheLoai());
+        holder.tacgia.setText(ds_truyen.getTacGia());
+        Picasso.with(context).load(ds_truyen.getAnh()).into(holder.img);
+        //int ImgID = getMipMapResIdByName(ds_truyen.getAnh());
+        //holder.img.setImageResource(ImgID);
         //Toast.makeText(context, a, Toast.LENGTH_SHORT).show();
+
         return view;
     }
     public int getMipMapResIdByName(String resName){
