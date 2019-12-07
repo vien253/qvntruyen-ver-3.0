@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent" android:padding="10dp"
-    android:background="#111">
+    android:background="#000">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -57,77 +57,13 @@
         android:text="Yêu thích"
         android:background="#B9E91E63"/>
     </RelativeLayout>
-       <TextView
-           android:layout_marginTop="2dp"
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:text="Chương 1"
-           android:textColor="#FFF"/>
-        <TextView
-            android:layout_marginTop="2dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Chương 2"
-            android:textColor="#FFF"/>
-    <TextView
-        android:layout_marginTop="2dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Chương 3"
-        android:textColor="#FFF"/>
-    <TextView
-        android:layout_marginTop="2dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Chương 4"
-        android:textColor="#FFF"/>
-    <TextView
-        android:layout_marginTop="2dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Chương 5"
-        android:textColor="#FFF"/>
-    <TextView
-        android:layout_marginTop="2dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Chương 6"
-        android:textColor="#FFF"/>
-    <TextView
-        android:layout_marginTop="2dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Chương 7"
-        android:textColor="#FFF"/>
-    <TextView
-        android:layout_marginTop="2dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Chương 8"
-        android:textColor="#FFF"/>
-    <TextView
-        android:layout_marginTop="2dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Chương 1"
-        android:textColor="#FFF"/>
-    <TextView
-        android:layout_marginTop="2dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Chương 9"
-        android:textColor="#FFF"/>
-    <TextView
-        android:layout_marginTop="2dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Chương 10"
-        android:textColor="#FFF"/>  <TextView
-    android:layout_marginTop="2dp"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="Chương 11"
-    android:textColor="#FFF"/>
+    <ListView
+        android:id="@+id/listchap"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    </ListView>
+
+
 
 
 

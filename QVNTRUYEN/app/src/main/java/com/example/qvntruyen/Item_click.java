@@ -13,23 +13,36 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.GridView;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.Volley;
 import com.squareup.picasso.Picasso;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 
 public class Item_click extends AppCompatActivity {
-    String urlGetData="http://192.168.1.111:8080/android/getdata.php";
+    String urlGetData="http://192.168.1.111:8080/android/getdatachap.php";
     ActionBar actionBar;
     private DrawerLayout drawer;
-    ArrayList<DS_Truyen> img_detail;
-    GridView gView;
-    Ad_Truyen listtruyen;
+    ArrayList<ChitietTruyen> img_detail;
+    ListView listVieư;
+    ChitietTruyenAdapter listchap;
     Context context;
     ImageView img;
     TextView tentruyen;
     TextView theloai;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,13 +55,53 @@ public class Item_click extends AppCompatActivity {
         String data = getIntent().getExtras().getString("img");
         String data2 = getIntent().getExtras().getString("tentruyen");
         String tl= getIntent().getExtras().getString("theloai");
+        Integer id= getIntent().getExtras().getInt("id");
         Picasso.with(context).load(Uri.parse(data)).into(img);
         tentruyen.setText(data2);
         theloai.setText(tl);
-        //Picasso.with(context).load("http://st.nettruyen.com/data/comics/13/100-dieu-muon-lam-truoc-khi-chet.jpg").into(img);
+        listVieư=(ListView)findViewById(R.id.listchap);
+        img_detail=new ArrayList<>();
+        listchap =new ChitietTruyenAdapter(this,R.layout.dongchap,img_detail);
+        listVieư.setAdapter(listchap);
+
+          GetData(urlGetData,id);
 
 
 
+
+
+    }
+    private void GetData(String url, final Integer id) {
+        RequestQueue requestQueue =  Volley.newRequestQueue(this);
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url, null,
+                new Response.Listener<JSONArray>() {
+                    @Override
+                    public void onResponse(JSONArray response) {
+                        for(int i=0; i<response.length();i++){
+                            try {
+                                JSONObject object = response.getJSONObject(i);
+                                if(object.getInt("ID")==id){
+                                img_detail.add(new ChitietTruyen(
+                                        object.getInt("IDTruyen"),
+                                        object.getString("Chap"),
+                                        object.getString("NoiDung"),
+                                        object.getInt("ID")
+                                ));}
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                        listchap.notifyDataSetChanged();
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(Item_click.this,"Lỗi!", Toast.LENGTH_SHORT).show();
+                    }
+                }
+        );
+        requestQueue.add(jsonArrayRequest);
 
     }
 

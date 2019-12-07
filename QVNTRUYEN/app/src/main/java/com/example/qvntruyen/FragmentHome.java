@@ -95,6 +95,7 @@ public class FragmentHome extends Fragment {
                 intent.putExtra("img", img_detail.get(position).getAnh());
                 intent.putExtra("tentruyen", img_detail.get(position).getTenTruyen());
                 intent.putExtra("theloai", img_detail.get(position).getTheLoai());
+                intent.putExtra("id", img_detail.get(position).getID());
                 startActivity(intent);
             }
         });

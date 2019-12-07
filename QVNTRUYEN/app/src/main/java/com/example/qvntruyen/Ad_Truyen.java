@@ -24,8 +24,6 @@ public class Ad_Truyen extends BaseAdapter {
     private Context context;
     private int layout;
     private List<DS_Truyen> DSList;
-    private  static ArrayAdapter<DS_Truyen> list;
-    LayoutInflater layoutInflater;
 
 
     public Ad_Truyen(Context context, int layout, List<DS_Truyen> DSList) {
