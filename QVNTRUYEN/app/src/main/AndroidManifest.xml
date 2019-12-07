@@ -10,6 +10,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
+        <activity android:name=".DocTruyenActivity"
+            android:theme="@style/Theme.AppCompat.Light.DarkActionBar"></activity>
         <activity android:name=".Item_click"
             android:theme="@style/Theme.AppCompat.Light.DarkActionBar"></activity>
         <activity android:name=".Search"></activity>

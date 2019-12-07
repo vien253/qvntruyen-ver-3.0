@@ -8,9 +8,13 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -32,7 +36,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 public class Item_click extends AppCompatActivity {
-    String urlGetData="http://192.168.1.111:8080/android/getdatachap.php";
+    String urlGetData="http://192.168.1.6:8080/android/getdatachap.php";
     ActionBar actionBar;
     private DrawerLayout drawer;
     ArrayList<ChitietTruyen> img_detail;
@@ -40,15 +44,17 @@ public class Item_click extends AppCompatActivity {
     ChitietTruyenAdapter listchap;
     Context context;
     ImageView img;
+    Button doctruyen;
     TextView tentruyen;
     TextView theloai;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+        protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_item_click);
         ActionBar actionBar = getSupportActionBar();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        doctruyen=(Button)findViewById(R.id.doctruyenbut);
         img = (ImageView) findViewById(R.id.single_lap_img);
         tentruyen = (TextView) findViewById(R.id.chitiet_tentruyen);
         theloai=(TextView)findViewById(R.id.chitiet_theoai);
@@ -63,12 +69,9 @@ public class Item_click extends AppCompatActivity {
         img_detail=new ArrayList<>();
         listchap =new ChitietTruyenAdapter(this,R.layout.dongchap,img_detail);
         listVieư.setAdapter(listchap);
-
-          GetData(urlGetData,id);
-
-
-
-
+        GetData(urlGetData,id);
+          Info1();
+          Info2();
 
     }
     private void GetData(String url, final Integer id) {
@@ -117,6 +120,32 @@ public class Item_click extends AppCompatActivity {
             }
 
             return super.onOptionsItemSelected(item);
+    }
+    private void  Info1(){
+        listVieư.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long l) {
+                Intent intent = new Intent(Item_click.this, DocTruyenActivity.class);
+                intent.putExtra("tenchap", img_detail.get(position).getChap());
+                intent.putExtra("noidungchap", img_detail.get(position).getNoiDung());
+                intent.putExtra("tentruyen", tentruyen.getText());
+                startActivity(intent);
+            }
+        });
+
+    }
+    private void Info2(){
+        doctruyen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Item_click.this, DocTruyenActivity.class);
+                intent.putExtra("tenchap", img_detail.get(0).getChap());
+                intent.putExtra("noidungchap", img_detail.get(0).getNoiDung());
+                intent.putExtra("tentruyen", tentruyen.getText());
+                startActivity(intent);
+            }
+        });
+
     }
 }
 
