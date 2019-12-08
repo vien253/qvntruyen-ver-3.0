@@ -34,7 +34,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FragmentHome extends Fragment {
-    String urlGetData="http://192.168.1.6:8080/android/getdata.php";
+    String urlGetData="https://qvntruyendata.000webhostapp.com/getdata.php";
     TextView mTvName;
      ArrayList<DS_Truyen> img_detail;
     GridView gView;

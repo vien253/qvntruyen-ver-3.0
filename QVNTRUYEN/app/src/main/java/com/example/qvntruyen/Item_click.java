@@ -2,10 +2,10 @@ package com.example.qvntruyen;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Context;
 import android.content.Intent;
@@ -15,7 +15,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
-import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -33,13 +32,14 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Item_click extends AppCompatActivity {
-    String urlGetData="http://192.168.1.6:8080/android/getdatachap.php";
+public class Item_click extends AppCompatActivity  implements Serializable {
+    String urlGetData="https://qvntruyendata.000webhostapp.com/getdatachap.php";
     ActionBar actionBar;
     private DrawerLayout drawer;
-    ArrayList<ChitietTruyen> img_detail;
+   public static ArrayList<ChitietTruyen> img_detail;
     ListView listVieư;
     ChitietTruyenAdapter listchap;
     Context context;
@@ -70,6 +70,8 @@ public class Item_click extends AppCompatActivity {
         listchap =new ChitietTruyenAdapter(this,R.layout.dongchap,img_detail);
         listVieư.setAdapter(listchap);
         GetData(urlGetData,id);
+
+
           Info1();
           Info2();
 
@@ -121,28 +123,25 @@ public class Item_click extends AppCompatActivity {
 
             return super.onOptionsItemSelected(item);
     }
-    private void  Info1(){
+    private void  Info1() {
         listVieư.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long l) {
-                Intent intent = new Intent(Item_click.this, DocTruyenActivity.class);
-                intent.putExtra("tenchap", img_detail.get(position).getChap());
-                intent.putExtra("noidungchap", img_detail.get(position).getNoiDung());
-                intent.putExtra("tentruyen", tentruyen.getText());
-                startActivity(intent);
+              //  Intent intent = new Intent(Item_click.this, DocTruyenActivity.class);
+             //   intent.putExtra("tenchap", img_detail.get(position).getChap());
+              //  intent.putExtra("noidungchap", img_detail.get(position).getNoiDung());
+              //  intent.putExtra("tentruyen", tentruyen.getText());
+              //  startActivity(intent);
             }
         });
 
     }
     private void Info2(){
         doctruyen.setOnClickListener(new View.OnClickListener() {
-            @Override
+
             public void onClick(View view) {
-                Intent intent = new Intent(Item_click.this, DocTruyenActivity.class);
-                intent.putExtra("tenchap", img_detail.get(0).getChap());
-                intent.putExtra("noidungchap", img_detail.get(0).getNoiDung());
-                intent.putExtra("tentruyen", tentruyen.getText());
-                startActivity(intent);
+             Intent intent= new Intent(Item_click.this,DocTruyenFragment.class);
+             startActivity(intent);
             }
         });
 

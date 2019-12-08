@@ -10,4 +10,7 @@
     //gridview
     <string name="home"> Trang chủ </string>
     <string name="note"> Tuyển chon những bộ truyện hay nhất hiện nay! </string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
