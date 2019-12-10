@@ -47,6 +47,7 @@ public class Item_click extends AppCompatActivity  implements Serializable {
     Button doctruyen;
     TextView tentruyen;
     TextView theloai;
+    FragmentManager fragmentManager;
 
     @Override
         protected void onCreate(Bundle savedInstanceState) {
@@ -127,11 +128,11 @@ public class Item_click extends AppCompatActivity  implements Serializable {
         listVieư.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long l) {
-              //  Intent intent = new Intent(Item_click.this, DocTruyenActivity.class);
+               Intent intent = new Intent(Item_click.this, DocTruyenActivity.class);
              //   intent.putExtra("tenchap", img_detail.get(position).getChap());
               //  intent.putExtra("noidungchap", img_detail.get(position).getNoiDung());
               //  intent.putExtra("tentruyen", tentruyen.getText());
-              //  startActivity(intent);
+                startActivity(intent);
             }
         });
 
@@ -140,8 +141,8 @@ public class Item_click extends AppCompatActivity  implements Serializable {
         doctruyen.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View view) {
-             Intent intent= new Intent(Item_click.this,DocTruyenFragment.class);
-             startActivity(intent);
+
+
             }
         });
 
