@@ -12,7 +12,10 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 
+import android.content.ContentValues;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Gravity;
@@ -44,11 +47,11 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-       ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this,drawer,toolbar,
-               R.string.navigation_drawer_open,R.string.navigation_drawer_close);
-         drawer.addDrawerListener(toggle);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this,drawer,toolbar,
+                R.string.navigation_drawer_open,R.string.navigation_drawer_close);
+        drawer.addDrawerListener(toggle);
 
-         toggle.syncState();
+        toggle.syncState();
         actionBar =getSupportActionBar();
 
         if(savedInstanceState==null)
@@ -57,7 +60,6 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                     new FragmentHome()).commit();
             bottomNavigationView.setSelectedItemId(R.id.trangchu);
         }
-
 
     }
 

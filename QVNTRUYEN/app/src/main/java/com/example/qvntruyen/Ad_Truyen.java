@@ -25,7 +25,6 @@ public class Ad_Truyen extends BaseAdapter {
     private int layout;
     private List<DS_Truyen> DSList;
 
-
     public Ad_Truyen(Context context, int layout, List<DS_Truyen> DSList) {
         this.context = context;
         this.layout = layout;

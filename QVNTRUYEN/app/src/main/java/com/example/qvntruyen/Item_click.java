@@ -7,8 +7,12 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -33,48 +37,57 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.Serializable;
+import java.io.StringReader;
 import java.util.ArrayList;
 
 public class Item_click extends AppCompatActivity  implements Serializable {
     String urlGetData="https://qvntruyendata.000webhostapp.com/getdatachap.php";
     ActionBar actionBar;
     private DrawerLayout drawer;
-   public static ArrayList<ChitietTruyen> img_detail;
+    public static ArrayList<ChitietTruyen> img_detail;
+    public static ArrayList<ListYT> Listyt;
     ListView listVieư;
     ChitietTruyenAdapter listchap;
     Context context;
     ImageView img;
     Button doctruyen;
+    Button yeuthich;
     TextView tentruyen;
     TextView theloai;
+    int id;
     FragmentManager fragmentManager;
 
     @Override
-        protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_item_click);
         ActionBar actionBar = getSupportActionBar();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         doctruyen=(Button)findViewById(R.id.doctruyenbut);
+        yeuthich=(Button)findViewById(R.id.yeuthichbut);
         img = (ImageView) findViewById(R.id.single_lap_img);
         tentruyen = (TextView) findViewById(R.id.chitiet_tentruyen);
         theloai=(TextView)findViewById(R.id.chitiet_theoai);
         String data = getIntent().getExtras().getString("img");
         String data2 = getIntent().getExtras().getString("tentruyen");
         String tl= getIntent().getExtras().getString("theloai");
-        Integer id= getIntent().getExtras().getInt("id");
+        id= getIntent().getExtras().getInt("id");
         Picasso.with(context).load(Uri.parse(data)).into(img);
         tentruyen.setText(data2);
         theloai.setText(tl);
         listVieư=(ListView)findViewById(R.id.listchap);
         img_detail=new ArrayList<>();
+        Listyt= new ArrayList<>();
         listchap =new ChitietTruyenAdapter(this,R.layout.dongchap,img_detail);
         listVieư.setAdapter(listchap);
         GetData(urlGetData,id);
 
 
-          Info1();
-          Info2();
+        Info1();
+        Info2();
+        Info3();
+
+
 
     }
     private void GetData(String url, final Integer id) {
@@ -87,12 +100,12 @@ public class Item_click extends AppCompatActivity  implements Serializable {
                             try {
                                 JSONObject object = response.getJSONObject(i);
                                 if(object.getInt("ID")==id){
-                                img_detail.add(new ChitietTruyen(
-                                        object.getInt("IDTruyen"),
-                                        object.getString("Chap"),
-                                        object.getString("NoiDung"),
-                                        object.getInt("ID")
-                                ));}
+                                    img_detail.add(new ChitietTruyen(
+                                            object.getInt("IDTruyen"),
+                                            object.getString("Chap"),
+                                            object.getString("NoiDung"),
+                                            object.getInt("ID")
+                                    ));}
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }
@@ -113,25 +126,25 @@ public class Item_click extends AppCompatActivity  implements Serializable {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-            switch (item.getItemId())
-            {
-                case android.R.id.home:
-                    onBackPressed();
-                    return true;
+        switch (item.getItemId())
+        {
+            case android.R.id.home:
+                onBackPressed();
+                return true;
 
-                default:break;
-            }
+            default:break;
+        }
 
-            return super.onOptionsItemSelected(item);
+        return super.onOptionsItemSelected(item);
     }
     private void  Info1() {
         listVieư.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long l) {
-               Intent intent = new Intent(Item_click.this, DocTruyenActivity.class);
-             //   intent.putExtra("tenchap", img_detail.get(position).getChap());
-              //  intent.putExtra("noidungchap", img_detail.get(position).getNoiDung());
-              //  intent.putExtra("tentruyen", tentruyen.getText());
+                Intent intent = new Intent(Item_click.this, DocTruyenActivity.class);
+                intent.putExtra("chap", img_detail.get(position).getChap());
+                intent.putExtra("noidungchap", img_detail.get(position).getNoiDung());
+                intent.putExtra("tentruyen", tentruyen.getText());
                 startActivity(intent);
             }
         });
@@ -141,11 +154,25 @@ public class Item_click extends AppCompatActivity  implements Serializable {
         doctruyen.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View view) {
+                Intent intent = new Intent(Item_click.this, DocTruyenActivity.class);
+                intent.putExtra("chap", img_detail.get(0).getChap());
+                intent.putExtra("tentruyen", tentruyen.getText());
+                startActivity(intent);
 
 
             }
         });
 
     }
-}
+    private  void Info3(){
+        yeuthich.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
 
+
+
+
+            }
+        });
+    }
+}

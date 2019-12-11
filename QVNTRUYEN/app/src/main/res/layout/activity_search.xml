@@ -9,12 +9,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".Search"
     >
+
     <SearchView
+        android:id="@+id/searchView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:queryHint="Search Here"
         android:iconifiedByDefault="false"
-        android:id="@+id/searchView">
+        android:queryHint="Search Here"
+        android:clickable="true"
+        android:visibility="visible">
 
     </SearchView>
     <GridView

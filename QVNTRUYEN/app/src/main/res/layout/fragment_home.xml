@@ -44,4 +44,8 @@
             android:verticalSpacing = "10dp">
         </GridView>
     </LinearLayout>
+
+    <SearchView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 </LinearLayout>

@@ -36,11 +36,11 @@ import java.util.List;
 public class FragmentHome extends Fragment {
     String urlGetData="https://qvntruyendata.000webhostapp.com/getdata.php";
     TextView mTvName;
-     ArrayList<DS_Truyen> img_detail;
+    ArrayList<DS_Truyen> img_detail;
     GridView gView;
     Ad_Truyen listtruyen;
     FrameLayout frameLayout;
-
+    
     //FragmentManager fm = getFragmentManager();
     @Nullable
     @Override
@@ -103,5 +103,3 @@ public class FragmentHome extends Fragment {
     }
 
 }
-
-
