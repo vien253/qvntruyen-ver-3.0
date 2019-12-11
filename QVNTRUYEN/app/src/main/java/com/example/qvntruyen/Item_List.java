@@ -41,7 +41,7 @@ import java.io.Serializable;
 import java.io.StringReader;
 import java.util.ArrayList;
 
-public class Item_click extends AppCompatActivity  implements Serializable {
+public class Item_List extends AppCompatActivity  implements Serializable {
     String urlGetData="https://qvntruyendata.000webhostapp.com/getdatachap.php";
     ActionBar actionBar;
     private DrawerLayout drawer;
@@ -61,14 +61,14 @@ public class Item_click extends AppCompatActivity  implements Serializable {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_item_click);
+        setContentView(R.layout.activity_lisy);
         ActionBar actionBar = getSupportActionBar();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        doctruyen=(Button)findViewById(R.id.doctruyenbut);
-        yeuthich=(Button)findViewById(R.id.yeuthichbut);
+        doctruyen=(Button)findViewById(R.id.doctruyenlistbut);
+        yeuthich=(Button)findViewById(R.id.bothichbut);
         img = (ImageView) findViewById(R.id.single_lap_img);
-        tentruyen = (TextView) findViewById(R.id.chitiet_tentruyen);
-        theloai=(TextView)findViewById(R.id.chitiet_theoai);
+        tentruyen = (TextView) findViewById(R.id.chitiet_tentruyen_list);
+        theloai=(TextView)findViewById(R.id.chitiet_theoai_list);
         String data = getIntent().getExtras().getString("img");
         String data2 = getIntent().getExtras().getString("tentruyen");
         String tl= getIntent().getExtras().getString("theloai");
@@ -76,30 +76,12 @@ public class Item_click extends AppCompatActivity  implements Serializable {
         Picasso.with(context).load(Uri.parse(data)).into(img);
         tentruyen.setText(data2);
         theloai.setText(tl);
-        listVieư=(ListView)findViewById(R.id.listchap);
+        listVieư=(ListView)findViewById(R.id.listchaplist);
         img_detail=new ArrayList<>();
         listchap =new ChitietTruyenAdapter(this,R.layout.dongchap,img_detail);
         listVieư.setAdapter(listchap);
         GetData(urlGetData,id);
-        int kt=0;
-        Cursor data1= HomeActivity.database.GetData("SELECT * FROM List");
-        while (data1.moveToNext())
-        {
-            int iddt=data1.getInt(0);
-            String is=String.valueOf(id);
-            if(iddt==id)
-                kt=1;
-
-
-        }
-        if(kt==0){
-            Info3();
-        }
-        else {
-            yeuthich.setEnabled(false);
-        }
-
-
+        Info3();
         Info1();
         Info2();
 
@@ -133,7 +115,7 @@ public class Item_click extends AppCompatActivity  implements Serializable {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(Item_click.this,"Lỗi!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Item_List.this,"Lỗi!", Toast.LENGTH_SHORT).show();
                     }
                 }
         );
@@ -158,7 +140,7 @@ public class Item_click extends AppCompatActivity  implements Serializable {
         listVieư.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long l) {
-                Intent intent = new Intent(Item_click.this, DocTruyenActivity.class);
+                Intent intent = new Intent(Item_List.this, DocTruyenActivity.class);
                 intent.putExtra("chap", img_detail.get(position).getChap());
                 intent.putExtra("noidungchap", img_detail.get(position).getNoiDung());
                 intent.putExtra("tentruyen", tentruyen.getText());
@@ -171,7 +153,7 @@ public class Item_click extends AppCompatActivity  implements Serializable {
         doctruyen.setOnClickListener(new View.OnClickListener() {
 
             public void onClick(View view) {
-                Intent intent = new Intent(Item_click.this, DocTruyenActivity.class);
+                Intent intent = new Intent(Item_List.this, DocTruyenActivity.class);
                 intent.putExtra("chap", img_detail.get(0).getChap());
                 intent.putExtra("tentruyen", tentruyen.getText());
                 startActivity(intent);
@@ -185,8 +167,8 @@ public class Item_click extends AppCompatActivity  implements Serializable {
         yeuthich.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                HomeActivity.database.QueryData("INSERT INTO List VALUES('"+ id +"')");
-                Toast.makeText(Item_click.this,"Đã thêm vào List",Toast.LENGTH_SHORT).show();
+                HomeActivity.database.QueryData("DELETE FROM List WHERE ID ='"+ id +"'");
+                Toast.makeText(Item_List.this,"Đã xóa khỏi List",Toast.LENGTH_SHORT).show();
             }
         });
     }

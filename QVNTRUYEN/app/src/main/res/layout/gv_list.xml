@@ -9,20 +9,16 @@
     android:layout_marginLeft="5dp"
     app:cardCornerRadius="16dp">
     <LinearLayout
-        android:id="@+id/ll_op"
-        android:padding="10dp"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:visibility="visible"
-        android:background="#20000000"
         android:gravity="center">
 
         <ImageView
             android:id="@+id/gv_item_iv_image"
             android:layout_width="170dp"
-            android:layout_height="170dp"
-            android:scaleType="fitCenter"
+            android:layout_height="250dp"
+            android:scaleType="fitXY"
             android:layout_marginTop="5dp"
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
@@ -42,16 +38,16 @@
             android:gravity="center"
             android:hint="ten"/>
         <TextView
-        android:id="@+id/gv_item_theloai"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColor="#3E4461"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:textSize="12dp"
-        android:textStyle="italic|bold"
-        android:gravity="center"
-        android:hint="theloai"/>
+            android:id="@+id/gv_item_theloai"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#3E4461"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:textSize="12dp"
+            android:textStyle="italic|bold"
+            android:gravity="center"
+            android:hint="theloai"/>
         <TextView
             android:id="@+id/gv_item_tg"
             android:layout_width="match_parent"

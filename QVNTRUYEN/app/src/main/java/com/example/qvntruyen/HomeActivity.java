@@ -34,6 +34,7 @@ import com.google.android.material.navigation.NavigationView;
 public class HomeActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
     private DrawerLayout drawer;
     ActionBar actionBar;
+    public static ListDB database;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,6 +61,12 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
                     new FragmentHome()).commit();
             bottomNavigationView.setSelectedItemId(R.id.trangchu);
         }
+        database= new ListDB(this,"list.sqlite",null,1);
+        database.QueryData("CREATE TABLE IF NOT EXISTS List(ID INTEGER PRIMARY KEY)");
+
+
+
+
 
     }
 

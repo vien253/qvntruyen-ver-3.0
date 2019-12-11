@@ -1,17 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <TextView
-        android:gravity="center"
-        android:textSize="20sp"
-        android:hint="List yêu thích trống"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
-    <androidx.recyclerview.widget.RecyclerView
-        android:padding="10dp"
-        android:id="@+id/frm_cart"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+<LinearLayout
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:layout_marginTop="55dp"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="List Yêu thích"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:textSize="30dp"
+        android:textColor="#111" />
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp">
+
+
+        <GridView
+            android:id="@+id/fragment_list_gv_item"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:columnWidth="140dp"
+            android:gravity="center"
+            android:numColumns="2"
+            android:horizontalSpacing = "10dp"
+            android:verticalSpacing = "10dp">
+        </GridView>
+    </LinearLayout>
 </LinearLayout>

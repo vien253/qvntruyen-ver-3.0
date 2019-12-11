@@ -44,12 +44,19 @@ public class DocTruyenActivity  extends AppCompatActivity implements View.OnClic
         k = Integer.valueOf(id1);
         chaptruyen= new ArrayList<>();
         chaptruyen=Item_click.img_detail;
+        chaptruyen=Item_List.img_detail;
+        if(Item_List.img_detail==null) {
+            chaptruyen = Item_click.img_detail;
+        }
+        else {
+            chaptruyen = Item_List.img_detail;
+        }
         int s= chaptruyen.size();
+
         for(int i=0;i<s;i++)
         {
             if((k-1)==i) {
                 httruyen.setText(chaptruyen.get(i).getNoiDung());
-
             }
         }
 

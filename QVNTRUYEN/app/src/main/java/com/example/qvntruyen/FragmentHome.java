@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.FrameLayout;
 import android.widget.GridView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -40,7 +41,6 @@ public class FragmentHome extends Fragment {
     GridView gView;
     Ad_Truyen listtruyen;
     FrameLayout frameLayout;
-    
     //FragmentManager fm = getFragmentManager();
     @Nullable
     @Override
@@ -49,6 +49,7 @@ public class FragmentHome extends Fragment {
         gView = (GridView) view.findViewById(R.id.fragment_home_gv_item);
         img_detail = new ArrayList<>();
         listtruyen = new Ad_Truyen(getContext(),R.layout.gv_item,img_detail);
+
         gView.setAdapter(listtruyen);
         GetData(urlGetData);
         Info();
